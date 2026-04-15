@@ -28,15 +28,3 @@ spec:
   - port: 80
     targetPort: 80
   type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: webpage2
-spec:
-  selector:
-    app: webpage
-  ports:
-  - port: 80
-    targetPort: 80
-  type: ClusterIP
