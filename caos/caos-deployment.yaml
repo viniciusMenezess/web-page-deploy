@@ -17,13 +17,6 @@ spec:
         image: fabricioveronez/simulador-do-caos
         ports:
         - containerPort: 3000
-        resources:
-          requests:
-            cpu: 500m
-            memory: 512Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
 ---
 apiVersion: v1
 kind: Service
