@@ -34,7 +34,6 @@ kind: Ingress
 metadata:
   name: webpage-ingress
 spec:
-  ingressClassName: nginx
   rules:
     - host: webpage.example.com
       http:
