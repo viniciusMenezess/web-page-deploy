@@ -28,21 +28,4 @@ spec:
   - port: 80
     targetPort: 80
   type: ClusterIP
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: webcolor-ingress
-spec:
-  rules:
-    - host: webcolor.example.com
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: webcolor
-            port:
-              number: 80
   
