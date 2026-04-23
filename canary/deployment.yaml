@@ -10,7 +10,6 @@ spec:
       targetPort: 80
       name: http
   type: LoadBalancer
-
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
@@ -21,7 +20,6 @@ spec:
   selector:
     matchLabels:
       app: webcolor
-
   template:
     metadata:
       labels:
@@ -30,16 +28,13 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/metrics"
         prometheus.io/port: "80"
-
     spec:
       containers:
         - name: webcolor
           image: fabricioveronez/web-color:green
           ports:
             - containerPort: 80
-
   minReadySeconds: 30
-
   strategy:
     canary:
       steps:
@@ -47,8 +42,10 @@ spec:
         - pause: {}
         - setWeight: 50
         - analysis:
-            - templateName: webcolor-success
+            templates:
+              - templateName: webcolor-success
         - setWeight: 75
         - analysis:
-            - templateName: webcolor-success
+            templates:
+              - templateName: webcolor-success
         - setWeight: 100
